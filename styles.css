@@ -174,6 +174,27 @@ label {
 .form-select option {
     background: #2d5016;
     color: #fff;
+    padding: 8px;
+}
+
+.form-select[multiple] {
+    height: auto;
+    min-height: 80px;
+    padding: 0;
+}
+
+.form-select[multiple] option {
+    padding: 10px;
+    margin: 2px;
+    background-color: #2d5016;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form-select[multiple] option:checked {
+    background: linear-gradient(#4CAF50, #4CAF50);
+    background-color: #4CAF50 !important;
 }
 
 /* Checkbox styling */

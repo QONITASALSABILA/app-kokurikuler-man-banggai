@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aplikasi Perencanaan Kokurikuler Deep Learning dan KBC - MAN Banggai</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="data.js"></script>
 </head>
 <body>
     <div class="container">
@@ -79,49 +80,83 @@
             <div class="input-section">
                 <h2 class="section-title">Kerangka Deep Learning & KBC</h2>
                 
-                <label for="dimensiKBC">Dimensi Cinta yang Dikembangkan (KBC)</label>
-                <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px;">
-                    <label style="display: flex; align-items: center; gap: 8px; margin: 0; font-weight: 400;">
-                        <input type="checkbox" value="Allah" class="dimensi-checkbox"> Cinta kepada Allah/Tuhan (Spiritual)
-                    </label>
-                    <label style="display: flex; align-items: center; gap: 8px; margin: 0; font-weight: 400;">
-                        <input type="checkbox" value="Diri" class="dimensi-checkbox"> Cinta kepada Diri Sendiri (Pengembangan Diri)
-                    </label>
-                    <label style="display: flex; align-items: center; gap: 8px; margin: 0; font-weight: 400;">
-                        <input type="checkbox" value="Keluarga" class="dimensi-checkbox"> Cinta kepada Keluarga
-                    </label>
-                    <label style="display: flex; align-items: center; gap: 8px; margin: 0; font-weight: 400;">
-                        <input type="checkbox" value="Masyarakat" class="dimensi-checkbox"> Cinta kepada Masyarakat (Tanggung Jawab Sosial)
-                    </label>
-                    <label style="display: flex; align-items: center; gap: 8px; margin: 0; font-weight: 400;">
-                        <input type="checkbox" value="Lingkungan" class="dimensi-checkbox"> Cinta kepada Lingkungan (Kesadaran Ekologis)
-                    </label>
-                </div>
+                <label for="tema">Tema Kokurikuler</label>
+                <select id="tema" class="form-select">
+                    <option value="">Pilih Tema</option>
+                    <option value="Aku Cinta Alam Ciptaan Allah">Aku Cinta Alam Ciptaan Allah</option>
+                    <option value="Bhineka Tunggal Ika">Bhineka Tunggal Ika</option>
+                    <option value="Bangunlah Jiwa dan Raganya">Bangunlah Jiwa dan Raganya</option>
+                    <option value="Suara Demokrasi">Suara Demokrasi</option>
+                    <option value="Gaya Hidup Berkelanjutan">Gaya Hidup Berkelanjutan</option>
+                    <option value="Teknologi untuk Kemanusiaan">Teknologi untuk Kemanusiaan</option>
+                    <option value="Kewirausahaan Sosial">Kewirausahaan Sosial</option>
+                </select>
+                
+                <label for="pokokBahasan">Pokok Bahasan</label>
+                <select id="pokokBahasan" class="form-select" disabled>
+                    <option value="">Pilih tema terlebih dahulu</option>
+                </select>
+                
+                <label for="mapelKolaboratif">Mata Pelajaran Kolaboratif</label>
+                <select id="mapelKolaboratif" class="form-select" disabled>
+                    <option value="">Pilih tema terlebih dahulu</option>
+                </select>
+                
+                <label for="topikKBC">Topik KBC (Kurikulum Berbasis Cinta)</label>
+                <select id="topikKBC" class="form-select" disabled>
+                    <option value="">Pilih tema terlebih dahulu</option>
+                </select>
+                
+                <label for="dimensiProfilLulusan">Dimensi Profil Lulusan (DPL)</label>
+                <select id="dimensiProfilLulusan" class="form-select" disabled multiple>
+                    <option value="">Pilih tema terlebih dahulu</option>
+                </select>
+                <p style="font-size: 11px; color: rgba(255,255,255,0.7); margin-top: 5px;">💡 Gunakan Ctrl+Click untuk memilih lebih dari satu</p>
                 
                 <label for="strategi">Strategi Deep Learning</label>
                 <select id="strategi" class="form-select">
                     <option value="">Pilih Strategi</option>
-                    <option value="Problem-Based Learning">Problem-Based Learning (PBL)</option>
-                    <option value="Project-Based Learning">Project-Based Learning (PjBL)</option>
+                    <option value="Problem-Based Learning (PBL)">Problem-Based Learning (PBL)</option>
+                    <option value="Project-Based Learning (PjBL)">Project-Based Learning (PjBL)</option>
                     <option value="Collaborative Learning">Collaborative Learning</option>
-                    <option value="Critical Thinking">Critical Thinking Activities</option>
-                    <option value="Kombinasi">Kombinasi (Pilih lebih dari satu)</option>
+                    <option value="Critical Thinking Activities">Critical Thinking Activities</option>
+                    <option value="Kombinasi Strategi">Kombinasi Strategi</option>
                 </select>
                 
                 <label for="alokasi">Alokasi Waktu</label>
                 <input type="text" id="alokasi" class="form-input" placeholder="Contoh: 10 JP (jam pelajaran) dalam 1 semester">
+            </div>
+
+            <!-- Input Section 3 -->
+            <div class="input-section">
+                <h2 class="section-title">Detail Pembelajaran</h2>
                 
                 <label for="tujuan">Tujuan Pembelajaran Kokurikuler</label>
-                <textarea id="tujuan" class="form-textarea" rows="3" placeholder="Tujuan apa yang ingin dicapai? (Pengetahuan, keterampilan, karakter/akhlak)"></textarea>
+                <select id="tujuan" class="form-select" disabled multiple>
+                    <option value="">Pilih tema terlebih dahulu</option>
+                </select>
+                <p style="font-size: 11px; color: rgba(255,255,255,0.7); margin-top: 5px;">💡 Gunakan Ctrl+Click untuk memilih lebih dari satu</p>
                 
                 <label for="kegiatan">Aktivitas Pembelajaran Utama</label>
-                <textarea id="kegiatan" class="form-textarea" rows="4" placeholder="Uraikan aktivitas pembelajaran yang akan dilakukan (mis. investigasi, diskusi, proyek, dst)"></textarea>
+                <select id="kegiatan" class="form-select" disabled multiple>
+                    <option value="">Pilih tema terlebih dahulu</option>
+                </select>
+                <p style="font-size: 11px; color: rgba(255,255,255,0.7); margin-top: 5px;">💡 Gunakan Ctrl+Click untuk memilih lebih dari satu</p>
                 
                 <label for="integrasiNilai">Integrasi Nilai-Nilai KBC</label>
-                <textarea id="integrasiNilai" class="form-textarea" rows="3" placeholder="Bagaimana nilai-nilai cinta diintegrasikan dalam pembelajaran?"></textarea>
+                <select id="integrasiNilai" class="form-select" disabled multiple>
+                    <option value="">Pilih tema terlebih dahulu</option>
+                </select>
+                <p style="font-size: 11px; color: rgba(255,255,255,0.7); margin-top: 5px;">💡 Gunakan Ctrl+Click untuk memilih lebih dari satu</p>
                 
                 <label for="penilaian">Asesmen/Penilaian Holistik</label>
-                <textarea id="penilaian" class="form-textarea" rows="3" placeholder="Penilaian mencakup: pengetahuan, keterampilan, sikap/akhlak, produk, dan refleksi"></textarea>
+                <select id="penilaian" class="form-select" disabled multiple>
+                    <option value="">Pilih tema terlebih dahulu</option>
+                </select>
+                <p style="font-size: 11px; color: rgba(255,255,255,0.7); margin-top: 5px;">💡 Gunakan Ctrl+Click untuk memilih lebih dari satu</p>
+                
+                <label for="catatan">Catatan/Keterangan Tambahan</label>
+                <textarea id="catatan" class="form-textarea" rows="3" placeholder="Tambahkan catatan atau keterangan khusus jika diperlukan"></textarea>
             </div>
 
             <!-- Preview Section -->
@@ -130,7 +165,7 @@
                 
                 <div class="preview-content" id="previewContent">
                     <div class="preview-placeholder">
-                        Klik tombol "Generate Preview" untuk melihat hasil perencanaan Anda
+                        Klik tombol "Generate Preview Rencana" untuk melihat hasil perencanaan Anda
                     </div>
                 </div>
                 
