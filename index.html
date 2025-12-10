@@ -36,7 +36,7 @@
         <div class="main-content">
             <!-- Input Section 1 -->
             <div class="input-section">
-                <h2 class="section-title">Informasi Dasar</h2>
+                <h2 class="section-title">Informasi Dasar & Tema</h2>
                 
                 <label for="namaMadrasah">Nama Madrasah</label>
                 <input type="text" id="namaMadrasah" class="form-input" placeholder="Contoh: MAN Banggai">
@@ -44,36 +44,84 @@
                 <label for="fase">Fase</label>
                 <select id="fase" class="form-select">
                     <option value="">Pilih Fase</option>
-                    <option value="A">Fase A (Kelas I dan II)</option>
-                    <option value="B">Fase B (Kelas III dan IV)</option>
-                    <option value="C">Fase C (Kelas V dan VI)</option>
-                    <option value="D">Fase D (Kelas VII, VIII, dan IX)</option>
+                    <option value="A">Fase A (Kelas I-II)</option>
+                    <option value="B">Fase B (Kelas III-IV)</option>
+                    <option value="C">Fase C (Kelas V-VI)</option>
+                    <option value="D">Fase D (Kelas VII-IX)</option>
                     <option value="E">Fase E (Kelas X)</option>
-                    <option value="F">Fase F (Kelas XI dan XII)</option>
+                    <option value="F">Fase F (Kelas XI-XII)</option>
                 </select>
                 
                 <label for="kelas">Kelas</label>
-                <input type="text" id="kelas" class="form-input" placeholder="Contoh: X IPA 1">
+                <input type="text" id="kelas" class="form-input" placeholder="Contoh: X IPA 1, XI IPS 2">
                 
                 <label for="tahunAjaran">Tahun Ajaran</label>
                 <input type="text" id="tahunAjaran" class="form-input" placeholder="2025/2026">
+                
+                <label for="tema">Tema Kokurikuler</label>
+                <select id="tema" class="form-select">
+                    <option value="">Pilih Tema</option>
+                    <option value="Gaya Hidup Berkelanjutan">Gaya Hidup Berkelanjutan</option>
+                    <option value="Kearifan Lokal & Identitas Budaya">Kearifan Lokal & Identitas Budaya</option>
+                    <option value="Bhineka Tunggal Ika">Bhineka Tunggal Ika</option>
+                    <option value="Bangunlah Jiwa dan Raganya">Bangunlah Jiwa dan Raganya</option>
+                    <option value="Suara Demokrasi">Suara Demokrasi</option>
+                    <option value="Teknologi untuk Kemanusiaan">Teknologi untuk Kemanusiaan</option>
+                    <option value="Kewirausahaan Sosial">Kewirausahaan Sosial</option>
+                    <option value="Lainnya">Lainnya (tuliskan di bawah)</option>
+                </select>
+                
+                <label for="temaKustom">Tema Lainnya (jika dipilih)</label>
+                <input type="text" id="temaKustom" class="form-input" placeholder="Tuliskan tema custom Anda">
             </div>
 
             <!-- Input Section 2 -->
             <div class="input-section">
-                <h2 class="section-title">Detail Perencanaan</h2>
+                <h2 class="section-title">Kerangka Deep Learning & KBC</h2>
                 
-                <label for="dimensi">Tema Kokurikuler</label>
-                <textarea id="dimensi" class="form-textarea" rows="4" placeholder="Pilih tema: Gaya Hidup Berkelanjutan, Kearifan Lokal, Bhineka Tunggal Ika, dll..."></textarea>
+                <label for="dimensiKBC">Dimensi Cinta yang Dikembangkan (KBC)</label>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px;">
+                    <label style="display: flex; align-items: center; gap: 8px; margin: 0; font-weight: 400;">
+                        <input type="checkbox" value="Allah" class="dimensi-checkbox"> Cinta kepada Allah/Tuhan (Spiritual)
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 8px; margin: 0; font-weight: 400;">
+                        <input type="checkbox" value="Diri" class="dimensi-checkbox"> Cinta kepada Diri Sendiri (Pengembangan Diri)
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 8px; margin: 0; font-weight: 400;">
+                        <input type="checkbox" value="Keluarga" class="dimensi-checkbox"> Cinta kepada Keluarga
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 8px; margin: 0; font-weight: 400;">
+                        <input type="checkbox" value="Masyarakat" class="dimensi-checkbox"> Cinta kepada Masyarakat (Tanggung Jawab Sosial)
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 8px; margin: 0; font-weight: 400;">
+                        <input type="checkbox" value="Lingkungan" class="dimensi-checkbox"> Cinta kepada Lingkungan (Kesadaran Ekologis)
+                    </label>
+                </div>
                 
-                <label for="modelPembelajaran">Pendekatan Deep Learning dan KBC</label>
-                <textarea id="modelPembelajaran" class="form-textarea" rows="4" placeholder="Jelaskan integrasi Deep Learning (pembelajaran mendalam) dengan Kurikulum Berbasis Cinta..."></textarea>
+                <label for="strategi">Strategi Deep Learning</label>
+                <select id="strategi" class="form-select">
+                    <option value="">Pilih Strategi</option>
+                    <option value="Problem-Based Learning">Problem-Based Learning (PBL)</option>
+                    <option value="Project-Based Learning">Project-Based Learning (PjBL)</option>
+                    <option value="Collaborative Learning">Collaborative Learning</option>
+                    <option value="Critical Thinking">Critical Thinking Activities</option>
+                    <option value="Kombinasi">Kombinasi (Pilih lebih dari satu)</option>
+                </select>
                 
-                <label for="kegiatan">Kegiatan yang Akan Dilakukan</label>
-                <textarea id="kegiatan" class="form-textarea" rows="5" placeholder="Uraikan kegiatan secara detail..."></textarea>
+                <label for="alokasi">Alokasi Waktu</label>
+                <input type="text" id="alokasi" class="form-input" placeholder="Contoh: 10 JP (jam pelajaran) dalam 1 semester">
                 
-                <label for="penilaian">Asesmen/Penilaian</label>
-                <textarea id="penilaian" class="form-textarea" rows="4" placeholder="Jelaskan metode penilaian..."></textarea>
+                <label for="tujuan">Tujuan Pembelajaran Kokurikuler</label>
+                <textarea id="tujuan" class="form-textarea" rows="3" placeholder="Tujuan apa yang ingin dicapai? (Pengetahuan, keterampilan, karakter/akhlak)"></textarea>
+                
+                <label for="kegiatan">Aktivitas Pembelajaran Utama</label>
+                <textarea id="kegiatan" class="form-textarea" rows="4" placeholder="Uraikan aktivitas pembelajaran yang akan dilakukan (mis. investigasi, diskusi, proyek, dst)"></textarea>
+                
+                <label for="integrasiNilai">Integrasi Nilai-Nilai KBC</label>
+                <textarea id="integrasiNilai" class="form-textarea" rows="3" placeholder="Bagaimana nilai-nilai cinta diintegrasikan dalam pembelajaran?"></textarea>
+                
+                <label for="penilaian">Asesmen/Penilaian Holistik</label>
+                <textarea id="penilaian" class="form-textarea" rows="3" placeholder="Penilaian mencakup: pengetahuan, keterampilan, sikap/akhlak, produk, dan refleksi"></textarea>
             </div>
 
             <!-- Preview Section -->
@@ -87,9 +135,9 @@
                 </div>
                 
                 <div class="button-group">
-                    <button class="btn-info">Kunjungi Channel YouTube: Madrasah Aliyah Negeri Banggai</button>
-                    <button id="btnGenerate" class="btn-generate">Generate Preview</button>
-                    <button id="btnDownload" class="btn-download" disabled>Download Dokumen (Word)</button>
+                    <button type="button" class="btn-info" onclick="openPanduan()">📚 Baca Panduan Deep Learning & KBC</button>
+                    <button id="btnGenerate" type="button" class="btn-generate">Generate Preview Rencana</button>
+                    <button id="btnDownload" type="button" class="btn-download" disabled>⬇️ Download Dokumen (Word)</button>
                 </div>
             </div>
         </div>

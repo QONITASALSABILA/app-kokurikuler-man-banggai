@@ -176,6 +176,18 @@ label {
     color: #fff;
 }
 
+/* Checkbox styling */
+.dimensi-checkbox {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #2196F3;
+}
+
+.dimensi-checkbox:checked {
+    accent-color: #4CAF50;
+}
+
 .form-textarea {
     resize: vertical;
     min-height: 80px;
