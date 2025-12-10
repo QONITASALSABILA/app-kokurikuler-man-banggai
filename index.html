@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Perencanaan Kokurikuler Deep Learning dan KBC - MAN Banggai</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo-container">
+                <img src="public/images/logo.png" alt="Logo Kementerian Agama" class="logo">
+            </div>
+            <div class="header-text">
+                <h1>APLIKASI PERENCANAAN KOKURIKULER</h1>
+                <div class="subtitle">Integrasi Deep Learning dan Kurikulum Berbasis Cinta</div>
+                <div class="subtitle-small">Madrasah Aliyah Negeri Banggai</div>
+            </div>
+            <div class="auth-buttons">
+                <div class="auth-group">
+                    <input type="text" id="usernameReg" placeholder="Username" class="auth-input">
+                    <input type="password" id="passwordReg" placeholder="Password" class="auth-input">
+                    <button onclick="handleRegistrasi()" class="btn-registrasi">Registrasi</button>
+                </div>
+                <div class="auth-group">
+                    <input type="text" id="usernameLogin" placeholder="Username" class="auth-input">
+                    <input type="password" id="passwordLogin" placeholder="Password" class="auth-input">
+                    <button onclick="handleLogin()" class="btn-login">Login</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Input Section 1 -->
+            <div class="input-section">
+                <h2 class="section-title">Informasi Dasar</h2>
+                
+                <label for="namaMadrasah">Nama Madrasah</label>
+                <input type="text" id="namaMadrasah" class="form-input" placeholder="Contoh: MAN Banggai">
+                
+                <label for="fase">Fase</label>
+                <select id="fase" class="form-select">
+                    <option value="">Pilih Fase</option>
+                    <option value="A">Fase A (Kelas I dan II)</option>
+                    <option value="B">Fase B (Kelas III dan IV)</option>
+                    <option value="C">Fase C (Kelas V dan VI)</option>
+                    <option value="D">Fase D (Kelas VII, VIII, dan IX)</option>
+                    <option value="E">Fase E (Kelas X)</option>
+                    <option value="F">Fase F (Kelas XI dan XII)</option>
+                </select>
+                
+                <label for="kelas">Kelas</label>
+                <input type="text" id="kelas" class="form-input" placeholder="Contoh: X IPA 1">
+                
+                <label for="tahunAjaran">Tahun Ajaran</label>
+                <input type="text" id="tahunAjaran" class="form-input" placeholder="2025/2026">
+            </div>
+
+            <!-- Input Section 2 -->
+            <div class="input-section">
+                <h2 class="section-title">Detail Perencanaan</h2>
+                
+                <label for="dimensi">Tema Kokurikuler</label>
+                <textarea id="dimensi" class="form-textarea" rows="4" placeholder="Pilih tema: Gaya Hidup Berkelanjutan, Kearifan Lokal, Bhineka Tunggal Ika, dll..."></textarea>
+                
+                <label for="modelPembelajaran">Pendekatan Deep Learning dan KBC</label>
+                <textarea id="modelPembelajaran" class="form-textarea" rows="4" placeholder="Jelaskan integrasi Deep Learning (pembelajaran mendalam) dengan Kurikulum Berbasis Cinta..."></textarea>
+                
+                <label for="kegiatan">Kegiatan yang Akan Dilakukan</label>
+                <textarea id="kegiatan" class="form-textarea" rows="5" placeholder="Uraikan kegiatan secara detail..."></textarea>
+                
+                <label for="penilaian">Asesmen/Penilaian</label>
+                <textarea id="penilaian" class="form-textarea" rows="4" placeholder="Jelaskan metode penilaian..."></textarea>
+            </div>
+
+            <!-- Preview Section -->
+            <div class="preview-section">
+                <h2 class="section-title">Preview Dokumen</h2>
+                
+                <div class="preview-content" id="previewContent">
+                    <div class="preview-placeholder">
+                        Klik tombol "Generate Preview" untuk melihat hasil perencanaan Anda
+                    </div>
+                </div>
+                
+                <div class="button-group">
+                    <button class="btn-info">Kunjungi Channel YouTube: Madrasah Aliyah Negeri Banggai</button>
+                    <button id="btnGenerate" class="btn-generate">Generate Preview</button>
+                    <button id="btnDownload" class="btn-download" disabled>Download Dokumen (Word)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
