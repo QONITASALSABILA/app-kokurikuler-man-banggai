@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aplikasi Perencanaan Kokurikuler Deep Learning dan KBC - MAN Banggai</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="data.js"></script>
+    <link rel="stylesheet" href="styles.css?v=2">
+    <script src="data.js?v=2"></script>
 </head>
 <body>
     <div class="container">
@@ -20,15 +20,21 @@
                 <div class="subtitle-small">Madrasah Aliyah Negeri Banggai</div>
             </div>
             <div class="auth-buttons">
-                <div class="auth-group">
-                    <input type="text" id="usernameReg" placeholder="Username" class="auth-input">
-                    <input type="password" id="passwordReg" placeholder="Password" class="auth-input">
-                    <button onclick="handleRegistrasi()" class="btn-registrasi">Registrasi</button>
+                <div id="authStatus" class="auth-status">
+                    <span id="authUserText"></span>
+                    <button type="button" onclick="handleLogout()" class="btn-logout">Logout</button>
                 </div>
-                <div class="auth-group">
-                    <input type="text" id="usernameLogin" placeholder="Username" class="auth-input">
-                    <input type="password" id="passwordLogin" placeholder="Password" class="auth-input">
-                    <button onclick="handleLogin()" class="btn-login">Login</button>
+                <div id="authForms">
+                    <div class="auth-group">
+                        <input type="text" id="usernameReg" placeholder="Username baru" class="auth-input">
+                        <input type="password" id="passwordReg" placeholder="Password" class="auth-input">
+                        <button type="button" onclick="handleRegistrasi()" class="btn-registrasi">Registrasi</button>
+                    </div>
+                    <div class="auth-group">
+                        <input type="text" id="usernameLogin" placeholder="Username" class="auth-input">
+                        <input type="password" id="passwordLogin" placeholder="Password" class="auth-input">
+                        <button type="button" onclick="handleLogin()" class="btn-login">Login</button>
+                    </div>
                 </div>
             </div>
         </header>
@@ -194,8 +200,11 @@
                 </div>
             </div>
         </div>
+        <footer class="page-footer">
+            <span>#akademikmanbanggai2025</span>
+        </footer>
     </div>
 
-    <script src="app.js"></script>
+    <script src="app.js?v=2"></script>
 </body>
 </html>
