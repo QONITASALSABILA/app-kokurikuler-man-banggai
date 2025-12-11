@@ -1,3 +1,12 @@
+// Konstanta Panca Cinta KBC
+const PANCA_CINTA_KBC = [
+    'Cinta Allah',
+    'Cinta Diri',
+    'Cinta Sesama',
+    'Cinta Alam/Lingkungan',
+    'Cinta Ilmu & Karya/Bangsa'
+];
+
 // State management
 const appState = {
     formData: {},
@@ -61,8 +70,8 @@ function handleThemeChange() {
     // Update Mapel Kolaboratif
     updateSelect(form.mapelKolaboratif, themeData.mapel_kolaboratif);
     
-    // Update Topik KBC
-    updateSelect(form.topikKBC, themeData.topik_kbc);
+    // Update Topik KBC menggunakan 5 Panca Cinta sebagai standar
+    updateSelect(form.topikKBC, PANCA_CINTA_KBC);
     
     // Update Dimensi Profil Lulusan (multi-select)
     updateMultiSelect(form.dimensiProfilLulusan, themeData.profil_lulusan);
