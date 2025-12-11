@@ -365,14 +365,28 @@ function downloadDocument() {
         }
         .cover { 
             text-align: center; 
-            padding: 60px 20px; 
+            padding: 40px 20px 60px 20px; 
             margin-bottom: 30px;
+        }
+        .kop-instansi {
+            font-size: 12pt;
+            line-height: 1.4;
+        }
+        .kop-instansi .instansi {
+            font-weight: bold;
+            font-size: 13pt;
+        }
+        .kop-instansi .madrasah {
+            font-weight: bold;
+            font-size: 14pt;
+            text-transform: uppercase;
         }
         .cover h1 { 
             font-size: 16pt; 
             font-weight: bold; 
-            margin: 15px 0; 
+            margin: 20px 0 10px 0; 
             line-height: 1.4;
+            text-transform: uppercase;
         }
         .cover h2 { 
             font-size: 14pt; 
@@ -382,7 +396,7 @@ function downloadDocument() {
         }
         .cover p { 
             font-size: 12pt; 
-            margin: 8px 0;
+            margin: 6px 0;
         }
         .section-title { 
             font-size: 11pt; 
@@ -447,13 +461,37 @@ function downloadDocument() {
 <body>
     <!-- COVER PAGE -->
     <div class="cover">
+        <div class="kop-instansi">
+            <div class="instansi">KEMENTERIAN AGAMA REPUBLIK INDONESIA</div>
+            <div class="madrasah">${form.namaMadrasah.value || 'MADRASAH ALIYAH NEGERI BANGGAI'}</div>
+            <div>Alamat: ..............................................................</div>
+            <div>Telp/Email: ........................................................</div>
+        </div>
+
         <h1>RENCANA KEGIATAN KOKURIKULER MADRASAH</h1>
-        <p style="margin-top: 25px;">Pembelajaran Kolaboratif Lintas Disiplin Ilmu</p>
-        <h2 style="margin-top: 40px;">${selectedTema.toUpperCase()}</h2>
-        <p style="margin-top: 40px;">Tahun Ajaran ${form.tahunAjaran.value}</p>
-        <p style="margin-top: 10px; font-size: 11pt;">Penyusun: ${activeUser}</p>
-        <p style="margin-top: 60px; font-size: 14pt; font-weight: bold;">${form.namaMadrasah.value}</p>
-        <p style="margin-top: 20px; font-size: 11pt;">#akademikmanbanggai2025</p>
+        <p>Pembelajaran Kolaboratif Lintas Disiplin Ilmu</p>
+        <h2 style="margin-top: 20px;">${selectedTema.toUpperCase()}</h2>
+        <p style="margin-top: 20px;">Tahun Ajaran ${form.tahunAjaran.value}</p>
+
+        <div style="margin-top: 40px;">
+            <table style="border: none; width: 100%;">
+                <tbody>
+                    <tr>
+                        <td style="border: none; width: 50%; text-align: left; padding-left: 40px;">
+                            <strong>Penyusun:</strong><br>
+                            ${activeUser}<br><br>
+                        </td>
+                        <td style="border: none; width: 50%; text-align: center;">
+                            Mengetahui,<br>
+                            Kepala Madrasah<br><br><br><br>
+                            (........................................)
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p style="margin-top: 30px; font-size: 11pt;">#akademikmanbanggai2025</p>
     </div>
     
     <div class="page-break"></div>
