@@ -11,7 +11,8 @@ const PANCA_CINTA_KBC = [
 const appState = {
     formData: {},
     isGenerated: false,
-    selectedTheme: ''
+    selectedTheme: '',
+    currentUser: null
 };
 
 // Form elements
@@ -38,6 +39,9 @@ const form = {
 const previewContent = document.getElementById('previewContent');
 const btnGenerate = document.getElementById('btnGenerate');
 const btnDownload = document.getElementById('btnDownload');
+const authForms = document.getElementById('authForms');
+const authStatus = document.getElementById('authStatus');
+const authUserText = document.getElementById('authUserText');
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
@@ -49,6 +53,9 @@ document.addEventListener('DOMContentLoaded', () => {
     form.tema.addEventListener('change', handleThemeChange);
     btnGenerate.addEventListener('click', generatePreview);
     btnDownload.addEventListener('click', downloadDocument);
+
+    // Inisialisasi status login dari localStorage
+    initAuthState();
 });
 
 // Handle theme change - update all related dropdowns
@@ -160,9 +167,18 @@ function getSelectedValues(selectElement) {
 
 // Generate preview
 function generatePreview() {
+    // Wajib login sebelum generate
+    const activeUser = localStorage.getItem('akademikmanbanggai_user');
+    if (!activeUser) {
+        alert('Silakan login terlebih dahulu untuk generate rencana kokurikuler.');
+        return;
+    }
+
+    appState.currentUser = activeUser;
     // Collect form data
     appState.formData = {
         namaMadrasah: form.namaMadrasah.value || 'Nama Madrasah',
+        penyusun: activeUser,
         fase: getFaseName(form.fase.value),
         kelas: form.kelas.value || 'Belum diisi',
         tahunAjaran: form.tahunAjaran.value,
@@ -193,6 +209,7 @@ function generatePreview() {
             </h3>
             <div style="line-height: 1.8; margin-bottom: 15px;">
                 <strong>Nama Madrasah:</strong> ${appState.formData.namaMadrasah}<br>
+                <strong>Penyusun:</strong> ${appState.formData.penyusun}<br>
                 <strong>Fase:</strong> ${appState.formData.fase}<br>
                 <strong>Kelas:</strong> ${appState.formData.kelas}<br>
                 <strong>Tahun Ajaran:</strong> ${appState.formData.tahunAjaran}
@@ -313,6 +330,12 @@ function downloadDocument() {
         alert('Silakan generate preview terlebih dahulu!');
         return;
     }
+
+    const activeUser = localStorage.getItem('akademikmanbanggai_user');
+    if (!activeUser) {
+        alert('Silakan login terlebih dahulu untuk mengunduh dokumen.');
+        return;
+    }
     
     const selectedTema = form.tema.value;
     const themeData = learningDatabase[selectedTema];
@@ -428,7 +451,9 @@ function downloadDocument() {
         <p style="margin-top: 25px;">Pembelajaran Kolaboratif Lintas Disiplin Ilmu</p>
         <h2 style="margin-top: 40px;">${selectedTema.toUpperCase()}</h2>
         <p style="margin-top: 40px;">Tahun Ajaran ${form.tahunAjaran.value}</p>
+        <p style="margin-top: 10px; font-size: 11pt;">Penyusun: ${activeUser}</p>
         <p style="margin-top: 60px; font-size: 14pt; font-weight: bold;">${form.namaMadrasah.value}</p>
+        <p style="margin-top: 20px; font-size: 11pt;">#akademikmanbanggai2025</p>
     </div>
     
     <div class="page-break"></div>
@@ -439,6 +464,7 @@ function downloadDocument() {
     <div class="section-title">A. IDENTITAS MADRASAH</div>
     <div class="info-table">
         <div><strong>Nama Madrasah</strong>   : ${form.namaMadrasah.value}</div>
+        <div><strong>Penyusun</strong>        : ${activeUser}</div>
         <div><strong>Fase</strong>            : ${form.fase.value}</div>
         <div><strong>Kelas</strong>           : ${form.kelas.value}</div>
         <div><strong>Tahun Ajaran</strong>    : ${form.tahunAjaran.value}</div>
@@ -785,11 +811,78 @@ function downloadDocument() {
         </table>
     </div>
     
+    <div class="page-break"></div>
+    <div class="section-title">Lampiran 3. Ringkasan Pelaksanaan Kegiatan</div>
+    <div class="content">
+        Kegiatan kokurikuler dengan tema <strong>"${selectedTema}"</strong> dilaksanakan sebagai bagian dari penguatan profil pelajar Pancasila dan moderasi beragama di ${form.namaMadrasah.value}. Kegiatan ini dirancang dengan pendekatan Deep Learning dan Kurikulum Berbasis Cinta (KBC), sehingga siswa tidak hanya memahami konsep secara kognitif, tetapi juga menghayati nilai-nilai cinta Allah, diri, sesama, alam, dan ilmu/karya dalam praktik nyata.
+        <br><br>
+        Secara umum, pelaksanaan kegiatan berjalan <strong>..............................................................</strong> (isi singkat oleh guru). Siswa menunjukkan partisipasi aktif dalam diskusi, riset, perancangan projek, pelaksanaan karya, serta presentasi dan refleksi. Hasil kegiatan diharapkan berdampak pada penguatan karakter, keterampilan kolaborasi, kreativitas, dan kepedulian sosial serta lingkungan.
+    </div>
+
+    <div class="section-title">Lampiran 4. Berita Acara Pelaksanaan Kegiatan</div>
+    <div class="content">
+        Pada hari ini, ____________ tanggal ____________ bulan ____________ tahun ____________, bertempat di ${form.namaMadrasah.value}, telah dilaksanakan kegiatan kokurikuler dengan tema <strong>"${selectedTema}"</strong> bagi peserta didik kelas ${form.kelas.value || '........'} Fase ${form.fase.value || '...'} Tahun Ajaran ${form.tahunAjaran.value}.
+    </div>
+    <table>
+        <tbody>
+            <tr>
+                <td style="width: 25%;"><strong>Waktu Pelaksanaan</strong></td>
+                <td style="width: 75%;">_______________________________</td>
+            </tr>
+            <tr>
+                <td><strong>Tempat</strong></td>
+                <td>_______________________________</td>
+            </tr>
+            <tr>
+                <td><strong>Peserta</strong></td>
+                <td>_______________________________</td>
+            </tr>
+            <tr>
+                <td><strong>Ringkasan Jalannya Kegiatan</strong></td>
+                <td style="height: 80px; vertical-align: top;">______________________________________________________________<br>______________________________________________________________<br>______________________________________________________________</td>
+            </tr>
+            <tr>
+                <td><strong>Hasil/Produk Kegiatan</strong></td>
+                <td style="height: 80px; vertical-align: top;">______________________________________________________________<br>______________________________________________________________<br>______________________________________________________________</td>
+            </tr>
+            <tr>
+                <td><strong>Catatan Penting</strong></td>
+                <td style="height: 60px; vertical-align: top;">______________________________________________________________<br>______________________________________________________________</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div style="margin-top: 40px;">
+        <table style="border: none; width: 100%;">
+            <tbody>
+                <tr>
+                    <td style="border: none; text-align: center; width: 33%;">
+                        Mengetahui,<br>
+                        Kepala Madrasah<br><br><br><br>
+                        (........................................)
+                    </td>
+                    <td style="border: none; text-align: center; width: 33%;">
+                        Koordinator Kegiatan Kokurikuler<br><br><br><br><br>
+                        (........................................)
+                    </td>
+                    <td style="border: none; text-align: center; width: 33%;">
+                        Guru Pelaksana<br><br><br><br><br>
+                        (........................................)
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
     ${appState.formData.catatan ? `
     <div class="page-break"></div>
     <div class="section-title">CATATAN KHUSUS</div>
     <div class="content">${appState.formData.catatan}</div>
     ` : ''}
+    
+    <div style="margin-top: 40px; text-align: center; font-size: 10pt; opacity: 0.8;">
+        #akademikmanbanggai2025
+    </div>
     
 </body>
 </html>
@@ -810,7 +903,22 @@ function downloadDocument() {
     alert('✅ Dokumen RPP berhasil diunduh!\n\nDokumen dapat dibuka dengan Microsoft Word.\nFormat dokumen sudah lengkap dengan:\n• Cover halaman\n• Identitas madrasah\n• Praktek pedagogik dengan bahasa instruksional\n• Kegiatan pembelajaran detail per hari\n• Kegiatan guru dan kegiatan siswa terpisah\n• Lampiran observasi dan rubrik penilaian');
 }
 
-// Authentication functions (placeholder)
+// ======== AUTENTIKASI SEDERHANA (localStorage) ========
+
+function initAuthState() {
+    const storedUser = localStorage.getItem('akademikmanbanggai_user');
+    if (storedUser) {
+        authUserText.textContent = `Login sebagai: ${storedUser}`;
+        authStatus.style.display = 'flex';
+        authForms.style.display = 'none';
+        appState.currentUser = storedUser;
+    } else {
+        authStatus.style.display = 'none';
+        authForms.style.display = 'flex';
+        appState.currentUser = null;
+    }
+}
+
 function handleRegistrasi() {
     const username = document.getElementById('usernameReg').value;
     const password = document.getElementById('passwordReg').value;
@@ -819,8 +927,18 @@ function handleRegistrasi() {
         alert('Silakan isi username dan password!');
         return;
     }
-    
-    alert('Fitur registrasi akan segera tersedia. Saat ini aplikasi dapat digunakan tanpa login.');
+
+    const usersRaw = localStorage.getItem('akademikmanbanggai_users');
+    const users = usersRaw ? JSON.parse(usersRaw) : {};
+
+    if (users[username]) {
+        alert('Username sudah terdaftar. Silakan gunakan username lain atau lakukan login.');
+        return;
+    }
+
+    users[username] = { password };
+    localStorage.setItem('akademikmanbanggai_users', JSON.stringify(users));
+    alert('Registrasi berhasil! Silakan login menggunakan akun yang baru dibuat.');
 }
 
 function handleLogin() {
@@ -831,7 +949,23 @@ function handleLogin() {
         alert('Silakan isi username dan password!');
         return;
     }
-    
-    alert('Fitur login akan segera tersedia. Saat ini aplikasi dapat digunakan tanpa login.');
+
+    const usersRaw = localStorage.getItem('akademikmanbanggai_users');
+    const users = usersRaw ? JSON.parse(usersRaw) : {};
+
+    if (!users[username] || users[username].password !== password) {
+        alert('Username atau password tidak sesuai. Silakan coba lagi.');
+        return;
+    }
+
+    localStorage.setItem('akademikmanbanggai_user', username);
+    initAuthState();
+    alert(`Selamat datang, ${username}! Anda berhasil login.`);
+}
+
+function handleLogout() {
+    localStorage.removeItem('akademikmanbanggai_user');
+    initAuthState();
+    alert('Anda telah logout.');
 }
 

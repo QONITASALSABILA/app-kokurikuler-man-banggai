@@ -101,6 +101,33 @@ body {
     transition: all 0.3s;
 }
 
+.auth-status {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+.auth-status span {
+    font-size: 14px;
+}
+
+.btn-logout {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
+    background: #f44336;
+    color: #fff;
+}
+
+.btn-logout:hover {
+    background: #d32f2f;
+}
+
 .btn-registrasi {
     background: #4CAF50;
     color: white;
@@ -312,6 +339,19 @@ label {
 
 .preview-content::-webkit-scrollbar-thumb:hover {
     background: rgba(0, 0, 0, 0.5);
+}
+
+.page-footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.page-footer span {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 6px 14px;
+    border-radius: 999px;
 }
 
 /* Responsive */
