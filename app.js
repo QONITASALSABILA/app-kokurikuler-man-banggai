@@ -42,6 +42,8 @@ const btnDownload = document.getElementById('btnDownload');
 const authForms = document.getElementById('authForms');
 const authStatus = document.getElementById('authStatus');
 const authUserText = document.getElementById('authUserText');
+const mainContent = document.querySelector('.main-content');
+const lockMessage = document.getElementById('lockMessage');
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
@@ -950,10 +952,14 @@ function initAuthState() {
         authStatus.style.display = 'flex';
         authForms.style.display = 'none';
         appState.currentUser = storedUser;
+        if (mainContent) mainContent.classList.remove('locked');
+        if (lockMessage) lockMessage.style.display = 'none';
     } else {
         authStatus.style.display = 'none';
         authForms.style.display = 'flex';
         appState.currentUser = null;
+        if (mainContent) mainContent.classList.add('locked');
+        if (lockMessage) lockMessage.style.display = 'block';
     }
 }
 
